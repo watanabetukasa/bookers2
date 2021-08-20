@@ -1,0 +1,79 @@
+<script src="https://kit.fontawesome.com/9e13b4457c.js" crossorigin="anonymous"></script>
+<header class="navbar navbar-expand-lg navbar-light">
+  <div class="container">
+    <a class="navbar-brand p-3" href="/"></a
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+  <ul class="navbar-nav ml-auto">
+    <% if user_signed_in? %>
+      <li>
+        <i class="fas fa-home"></i>
+        <%= link_to "Home", user_path(current_user.id) ,class:"link"%>
+      </li>
+      <li>
+        <i class="fas fa-users"></i>
+        <%= link_to "Users", users_path ,class:"link"%>
+      </li>
+      <li>
+        <i class="fas fa-book-open"></i>
+        <%= link_to "Books", books_path(@book) ,class:"link"%>
+      </li>
+      <li>
+        <i class="fas fa-sign-out-alt"></i>
+        <%= link_to "logout", destroy_user_session_path, method: :delete ,class:"link"%>
+      </li>
+    <% else %>
+      <li>
+        <i class="fas fa-home"></i>
+        <%= link_to "Home", root_path ,class:"link" %>
+      </li>
+      <li>
+        <i class="fas fa-link"></i>
+        <%= link_to "About", "/home/about" ,class:"link" %>
+      </li>
+      <li>
+        <i class="fas fa-user-plus"></i>
+        <%= link_to "Sign up", new_user_registration_path ,class:"link" %>
+      </li>
+      <li>
+        <i class="fas fa-sign-in-alt"></i>
+        <%= link_to "Log in", new_user_session_path ,class:"link" %>
+      </li>
+    <% end %>
+    </div>
+</header>
+
+<main>
+<h2>Log in</h2>
+<%= form_with model: @user, url: user_session_path, local: true do |f| %>
+
+  <div class="field">
+    <%=f.label :name %><br />
+    <%=f.text_field :name,autoforcus: true, autocomplete: "name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "current-password" %>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end %>
+
+
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+  </main>
+
+<footer>
+  <p>CopyRight Infratop.inc</p>
+</footer>

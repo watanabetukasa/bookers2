@@ -1,0 +1,35 @@
+
+
+    <div>
+      <h1>User info</h1>
+
+      <%=attachment_image_tag @user,:profile_image, :fill,100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+
+      <h4>name</h4>
+      <%=@user.name %>
+
+      <h4>introdcution</h4>
+      <%=@user.introduction %>
+
+
+      <br>
+      <% if current_user.id == @user.id %>
+      <%=link_to "編集",edit_user_path(@user) %>
+      <% else %>
+      <%=link_to "編集",user_path(current_user.id) %>
+      <% end %>
+
+
+      <h1>New book</h1>
+
+      <%=form_with model:@book,local:true do |f| %>
+      <p>Title</p>
+      <%=f.text_field:title %>
+
+      <p>Opinions</p>
+      <%=f.text_area:body %>
+
+      <br><%=f.submit'Create Book' %>
+
+      <% end %>
+    </div>

@@ -1,0 +1,71 @@
+<script src="https://kit.fontawesome.com/9e13b4457c.js" crossorigin="anonymous"></script>
+<header class="navbar navbar-expand-lg navbar-light">
+  <div class="container">
+    <a class="navbar-brand p-3" href="/"></a
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+  <ul class="navbar-nav ml-auto">
+    <% if user_signed_in? %>
+      <li>
+        <i class="fas fa-home"></i>
+        <%= link_to "Home", user_path(current_user.id) ,class:"link"%>
+      </li>
+      <li>
+        <i class="fas fa-users"></i>
+        <%= link_to "Users", users_path ,class:"link"%>
+      </li>
+      <li>
+        <i class="fas fa-book-open"></i>
+        <%= link_to "Books", books_path(@book) ,class:"link"%>
+      </li>
+      <li>
+        <i class="fas fa-sign-out-alt"></i>
+        <%= link_to "logout", destroy_user_session_path, method: :delete ,class:"link"%>
+      </li>
+    <% else %>
+      <li>
+        <i class="fas fa-home"></i>
+        <%= link_to "Home", root_path ,class:"link" %>
+      </li>
+      <li>
+        <i class="fas fa-link"></i>
+        <%= link_to "About", home_about_path ,class:"link" %>
+      </li>
+      <li>
+        <i class="fas fa-user-plus"></i>
+        <%= link_to "sign_up", new_user_registration_path ,class:"link" %>
+      </li>
+      <li>
+        <i class="fas fa-sign-in-alt"></i>
+        <%= link_to "Login", new_user_session_path ,class:"link" %>
+      </li>
+    <% end %>
+    </div>
+</header>
+<% if @user.errors.any? %>
+  <%=@user.errors.count %>件のエラーが発生しました
+  <% @user.errors.full_messages.each do |message| %>
+  <% message %>
+  <% end %>
+<% end %>
+
+<main>
+<h1 class="info">User info</h1>
+<%=form_with model:@user,local:true do |f| %>
+<p>Name</p>
+<%=f.text_field :name%>
+
+<p>Image</p>
+<%=f.attachment_field:profile_image,placeholder: "プロフィール画像" %>
+
+<p>Introduction</p>
+<%=f.text_area:introduction %>
+<br><%=f.submit'Update User' %>
+<% end %>
+</main>
+<footer>
+  <p>CopyRight Infratop.inc</p>
+</footer>
+

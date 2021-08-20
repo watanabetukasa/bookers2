@@ -1,0 +1,73 @@
+// Place all the styles related to the homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+header {
+  background-color:black;
+  color:white;
+}
+
+header li {
+  list-style:none;
+  display:inline;
+  padding:10px;
+}
+
+main {
+
+  width:100%;
+  padding-top:30px;
+  padding-left: 300px;
+  margin:0 auto;
+}
+.content {
+  display:flex;
+  flex-wrap:wrap;
+}
+
+.user-list {
+  padding-left:50px;
+}
+
+.user-list h1 {
+  border-bottom:1px solid black;
+}
+
+.user-list-item {
+  border-top:1px solid black;
+  width:900px;
+}
+
+table {
+  width:500px;
+}
+
+.user-list-item th {
+
+}
+.user-list-body {
+  padding-right:0px;
+}
+
+.top {
+  padding-left:500px;
+}
+
+footer {
+  padding-top:50px;
+  text-align:center;
+}
+
+.list {
+  list-style:none;
+  padding-bottom:10px;
+  width:100%;
+}
+
+.list button {
+  font-size:12px;
+  height:30px;
+}
+
+.about {
+  padding-left:450px;
+}
