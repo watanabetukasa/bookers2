@@ -16,7 +16,6 @@ main {
 
   width:100%;
   padding-top:30px;
-  padding-left: 300px;
   margin:0 auto;
 }
 .content {
@@ -30,6 +29,7 @@ main {
 
 .user-list h1 {
   border-bottom:1px solid black;
+  width:1000px;
 }
 
 .user-list-item {
@@ -71,3 +71,4 @@ footer {
 .about {
   padding-left:450px;
 }
+

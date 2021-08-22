@@ -1,28 +1,28 @@
 
 
-    <div>
+        <div class="col-md-3">
+      <%= flash[:profile] %>
       <h1>User info</h1>
 
-      <%=attachment_image_tag @user,:profile_image, :fill,100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+      <%=attachment_image_tag user,:profile_image, :fill,100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
 
       <h4>name</h4>
-      <%=@user.name %>
+      <%=user.name %>
 
       <h4>introdcution</h4>
-      <%=@user.introduction %>
+      <%=user.introduction %>
 
 
       <br>
-      <% if current_user.id == @user.id %>
-      <%=link_to "編集",edit_user_path(@user) %>
-      <% else %>
-      <%=link_to "編集",user_path(current_user.id) %>
+      <%=link_to edit_user_path(user) do %>
+       <i class="fas fa-user-cog"></i>
       <% end %>
+
 
 
       <h1>New book</h1>
 
-      <%=form_with model:@book,local:true do |f| %>
+      <%=form_with model:book,local:true do |f| %>
       <p>Title</p>
       <%=f.text_field:title %>
 
@@ -32,4 +32,4 @@
       <br><%=f.submit'Create Book' %>
 
       <% end %>
-    </div>
+      </div>

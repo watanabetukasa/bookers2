@@ -1,11 +1,11 @@
 <script src="https://kit.fontawesome.com/9e13b4457c.js" crossorigin="anonymous"></script>
 <header class="navbar navbar-expand-lg navbar-light">
   <div class="container">
-    <a class="navbar-brand p-3" href="/"></a
+    <a class="navbar-brand p-3" href="/"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-
+      <h3>Bookers</h3>
   <ul class="navbar-nav ml-auto">
     <% if user_signed_in? %>
       <li>
@@ -50,13 +50,15 @@
 
 
 <main>
-  <div class="content">
-  <%=render'users/info' %>
+  <div class="container">
+    <div class="row">
+  <%=render'users/info',user:@user, book:@book %>
 
 
-  <div class="user-list">
+    <div class="col-md-8 offset-md-1">
       <h1>Users</h1>
-      <table>
+
+      <table class="table table-striped">
         <tr>
           <th>image</th>
           <th class="user-list-body">name</th>
@@ -68,10 +70,13 @@
           <tr class="user-list-item">
             <th><%=attachment_image_tag user,:profile_image,fallback: "no_image.jpg",size: "50x50" %></th>
             <th class="user-list-body"><%=user.name %></th>
-            <th><%=link_to "Show", user_path(user) %></th>
+            <th><%=link_to "Show", user_path(user),class:"btn btn-secondary"  %></th>
           </tr>
           <% end %>
       </table>
+          </div>
+        </div>
+
   </div>
   </div>
 </main>

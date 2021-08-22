@@ -1,11 +1,11 @@
 <script src="https://kit.fontawesome.com/9e13b4457c.js" crossorigin="anonymous"></script>
 <header class="navbar navbar-expand-lg navbar-light">
-  <div class="container">
+  <div class="cont">
     <a class="navbar-brand p-3" href="/"></a
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-
+  <h3>Bookers</h3>
   <ul class="navbar-nav ml-auto">
     <% if user_signed_in? %>
       <li>
@@ -47,9 +47,9 @@
 
 <main>
     <% if@book.errors.any? %>
-    <%=@book.errors.count %>件のエラーが発生しました
+    <%=@book.errors.count %>error prohibited this obj from being saved:
     <% @book.errors.full_messages.each do |message|%>
-    <%= message %>
+    <%=message %>
     <% end %>
     <% end %>
 <h1>Editing Book</h1>
@@ -63,6 +63,9 @@
 <%=f.text_area:body %>
 <br><%=f.submit 'Update Book' %>
 <% end %>
+
+<%=link_to "Show",book_path(@book) %> |
+<%=link_to "Back",books_path %>
 </main>
 
 <footer>
